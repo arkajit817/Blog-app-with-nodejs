@@ -1,0 +1,23 @@
+extends layout
+
+block content
+ li
+              a(href='/users/logout') Logout
+  if posts
+  input.form-control(name='title', class="live-search-box" type='text' placeholder="search here")
+  each post, i in posts
+    .post
+      h1
+        a(href='/posts/show/#{post._id}')
+          =post.title
+      p.meta Posted in
+        span  by  on #{moment(post.date).format("DD-MMM-YYYY")}
+      img(src='/images/uploads/#{post.mainimage}')
+      
+      a.more(href='/posts/show/#{post._id}') Read more
+  else
+    p.noposts There are no posts to display
+
+
+
+  
